@@ -1,4 +1,4 @@
-const SignInService = require('../signIn/signIn.service')
+const loginService = require('../login/login-service')
 
 function requireAuth(req, res, next) {
   const authToken = req.get('Authorization') || ''
@@ -11,9 +11,9 @@ function requireAuth(req, res, next) {
   }
   
   try {
-    const payload = SignInService.verifyJwt(bearerToken)
+    const payload = loginService.verifyJwt(bearerToken)
       //return payload.user_id
-    SignInService.getUserWithEmail(
+      loginService.getUserWithEmail(
       req.app.get('db'),
       payload.sub,
       payload.user_id,

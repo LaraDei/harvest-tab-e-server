@@ -55,4 +55,4 @@ createAccountRouter
       .catch(next)
   })
 
-module.exports = signUpRouter
+module.exports = createAccountRouter;
