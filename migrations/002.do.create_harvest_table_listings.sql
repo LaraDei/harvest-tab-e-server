@@ -5,8 +5,8 @@ CREATE TABLE harvest_table_listings (
     date_modified TIMESTAMP DEFAULT now() NOT NULL,
     img_location TEXT,
     location TEXT NOT NULL,
-    lat INTEGER NOT NULL,
-    lng INTEGER NOT NULL,
+    lat DECIMAL(20,15) NOT NULL,
+    lng DECIMAL(20,15) NOT NULL,
     description TEXT,
     user_id INTEGER
         REFERENCES harvest_table_users(id) ON DELETE CASCADE NOT NULL

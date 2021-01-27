@@ -7,28 +7,28 @@ function makeUsersArray() {
       id: 1,
       email: 'test-user-1@test.com',
       full_name: 'Test user 1',
-      password: 'password',
+      password: 'Password1',
       date_created: new Date('2029-01-22T16:28:32.615Z'),
     },
     {
       id: 2,
       email: 'test-user-2@test.com',
       full_name: 'Test user 2',
-      password: 'password',
+      password: 'Password2',
       date_created: new Date('2029-01-22T16:28:32.615Z'),
     },
     {
       id: 3,
       email: 'test-user-3@test.com',
       full_name: 'Test user 3',
-      password: 'password',
+      password: 'Password3',
       date_created: new Date('2029-01-22T16:28:32.615Z'),
     },
     {
       id: 4,
       email: 'test-user-4@test.com',
       full_name: 'Test user 4',
-      password: 'password',
+      password: 'Password4',
       date_created: new Date('2029-01-22T16:28:32.615Z'),
     },
   ]
@@ -39,97 +39,95 @@ function makeListingsArray(users) {
     {
       id: 1, 
       img_location: "https://source.unsplash.com/_zV74zUnwmc/500x500",
-      name: "kale",
+      title: "kale",
       location: "Mainstage, Broadway, Sacramento, CA, USA",
-      lat: 38.559005330011075,
-      lng: -121.48253537546658,
+      lat: '38.559005330011075',
+      lng: '-121.482535375466580',
       user_id: users[0].id,
       description: "Photo by Laura Johnston on Unsplash",
-      date_modified: new Date().toUTCString(),
-      date_created:"Wed Dec 05 2020 08:33:14 GMT-0800",
+      date_modified: new Date('2029-01-22T16:28:32.615Z'),
+      date_created:new Date('2029-01-22T16:28:32.615Z'),
       }, 
       {
       id: 2, 
       img_location: "https://source.unsplash.com/gXQCELcnI2U/500x500",
-      name: "daffodils",
+      title: "daffodils",
       location: "Main St, Orangevale, Sacramento, CA, USA",
-      lat: 38.671668508216705,
-      lng: -121.20250687361289,
+      lat: '38.671668508216705',
+      lng: '-121.202506873612890',
       user_id: users[0].id,
       description: "Photo by Annie Spratt on Unsplash",
-      date_modified: new Date().toUTCString(),
-      date_created:"Wed Dec 05 2020 08:33:14 GMT-0800",
+      date_modified: new Date('2029-01-22T16:28:32.615Z'),
+      date_created:new Date('2029-01-22T16:28:32.615Z'),
       },
       {
       id: 3, 
       img_location: "https://source.unsplash.com/s7r4xjKXo0s/500x500",
-      name: "apples",
+      title: "apples",
       location: "Orangevale, CA, USA",
-      lat: 38.67985581534705,
-      lng: -121.22604676782854,
+      lat: "38.679855815347050",
+      lng: "-121.226046767828540",
       user_id: users[0].id,
       description: "Photo by Pierpaolo Riondato on Unsplash",
-      date_modified: new Date().toUTCString(),
-      date_created:"Wed Dec 05 2020 08:33:14 GMT-0800",
+      date_modified: new Date('2029-01-22T16:28:32.615Z'),
+      date_created:new Date('2029-01-22T16:28:32.615Z'),
       },
       {
       id: 4, 
       img_location: "https://source.unsplash.com/TFqjlTmkeyY/500x500",
-      name: "lemons",
+      title: "lemons",
       location: "Main Avenue, Orangevale, CA, USA",
-      lat: 38.67339260916394,
-      lng: -121.20245947361286,
+      lat: '38.673392609163940',
+      lng: "-121.202459473612860",
       user_id: users[1].id,
       description: "Photo by Thitiphum Koonjantuek on Unsplash",
-      date_modified: new Date().toUTCString(),
-      date_created:"Wed Dec 05 2020 08:33:14 GMT-0800",
+      date_modified: new Date('2029-01-22T16:28:32.615Z'),
+      date_created: new Date('2029-01-22T16:28:32.615Z'),
       },
       {
       id: 5, 
       img_location: "https://source.unsplash.com/ZZU9Wqzpj-M/500x500",
-      name: "Oranges",
+      title: "Oranges",
       location: "Fair Oaks, CA, USA",
-      lat: 38.66248170591882,
-      lng: -121.27806123413936,
+      lat: "38.662481705918820",
+      lng: "-121.278061234139360",
       user_id: users[1].id,
       description: "Photo by Jeremy Yap on Unsplash",
-      date_modified: new Date().toUTCString(),
-      date_created:"Wed Dec 05 2020 08:33:14 GMT-0800",
+      date_modified: new Date('2029-01-22T16:28:32.615Z'),
+      date_created: new Date('2029-01-22T16:28:32.615Z'),
       },
   ];
 }
 
 
-// function makeExpectedListings(userId, photos, photoId) {
-//   const expectedPhotos = photos
-//     .filter(photo => photo.user_id === userId)
-//   if(photoId){
-//     const expectedPhoto = expectedPhotos.find(photo => photoId === photo.id)
-//     return {
-//       id: expectedPhoto.id,
-//       caption: expectedPhoto.caption,
-//       date_created: expectedPhoto.date_created,
-//       summary: expectedPhoto.summary,
-//       file_location: expectedPhoto.file_location,
-//       age: expectedPhoto.age || null,
-//       user_id: expectedPhoto.user_id,
-//       album_id: expectedPhoto.album_id,
-//     }
-//   } else
-//   return expectedPhotos.map(photo => {
-//     return {
-//       id: photo.id,
-//       caption: photo.caption,
-//       summary: photo.summary,
-//       file_location: photo.file_location,
-//       date_uploaded: photo.date_uploaded.toISOString(),
-//       date_created: photo.date_created,
-//       age: photo.age || null,
-//       user_id: photo.user_id,
-//       album_id: photo.album_id,
-//     }
-//   })
-// }
+function makeExpectedListing(listings, listingId) {
+  if(listingId){
+    const expectedListing = listings.find(listing => listingId === listing.id)
+    return {
+      id: expectedListing.id,
+      title: expectedListing.title,
+      date_modified: expectedListing.date_modified.toISOString(),
+      img_location: expectedListing.img_location || null,
+      location: expectedListing.location,
+      lat: expectedListing.lat,
+      lng: expectedListing.lng,
+      description: expectedListing.description || null,
+      user_id: expectedListing.user_id,
+    }
+  } else
+    return {
+      id: listings.id,
+      title: listings.title,
+      date_created: listings.date_created.toISOString(),
+      date_modified: listings.date_modified.toISOString(),
+      img_location: listings.img_location || null,
+      location: listings.location,
+      lat: listings.lat,
+      lng: listings.lng,
+      description: listings.description|| null,
+      user_id: listings.user_id,
+    }
+}
 
 
 function makeFixtures() {
@@ -143,13 +141,13 @@ function cleanTables(db) {
     trx.raw(
       `TRUNCATE
         harvest_table_users,
-        harvest_table_listings,
+        harvest_table_listings
       `
     )
     .then(() =>
       Promise.all([
-        trx.raw(`ALTER SEQUENCE harvest_table_users_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE harvest_table_listings_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE harvest_table_users_id_seq minvalue 0 START WITH 1`),
         trx.raw(`SELECT setval('harvest_table_listings_id_seq', 0)`),
         trx.raw(`SELECT setval('harvest_table_users_id_seq', 0)`),
       ])
@@ -172,7 +170,7 @@ function seedUsers(db, users) {
     )
 }
 
-function seedListingsTables(db, users, listings=[]) {
+function seedTables(db, users, listings) {
   // use a transaction to group the queries and auto rollback on any failure
   return db.transaction(async trx => {
     await seedUsers(trx, users)
@@ -197,11 +195,10 @@ function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
 module.exports = {
   makeUsersArray,
   makeListingsArray,
-
-
+  makeExpectedListing,
   makeFixtures,
   cleanTables,
-  seedListingsTables,
+  seedTables,
   makeAuthHeader,
   seedUsers,
 }

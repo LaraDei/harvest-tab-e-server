@@ -35,7 +35,7 @@ loginRouter
             const sub = dbUser.email
             const payload = { user_id: dbUser.id }
             res.send({
-              authToken: SignInService.createJwt(sub, payload),
+              authToken: loginService.createJwt(sub, payload),
             })
           })
       })
