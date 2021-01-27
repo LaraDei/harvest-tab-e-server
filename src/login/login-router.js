@@ -4,6 +4,11 @@ const { requireAuth } = require('../middleware/jwt-auth')
 const loginRouter = express.Router()
 const jsonParser = express.json()
 
+const serializeUser = user => ({
+  id: user.id,
+  fullname: user.fullname,
+}) 
+
 loginRouter
   .post('/login', jsonParser, (req, res, next) => {
     const { email, password } = req.body
@@ -34,22 +39,16 @@ loginRouter
 
             const sub = dbUser.email
             const payload = { user_id: dbUser.id }
-            res
-            .location(path.posix.join(req.originalUrl, `/${dbUser.id}`))
-            .send({
+            res.send({
               authToken: loginService.createJwt(sub, payload),
+              id: dbUser.id,
+              full_name: dbUser.full_name,
             })
+          
           })
       })
       .catch(next)
   })
 
-  // loginRouter.post('/refresh', requireAuth, (req, res) => {
-  //   const sub = req.user.email
-  //   const payload = { user_id: req.user.id }
-  //   res.send({
-  //     authToken: loginService.createJwt(sub, payload),
-  //   })
-  // })
 
 module.exports = loginRouter
