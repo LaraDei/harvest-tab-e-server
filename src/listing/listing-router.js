@@ -30,13 +30,15 @@ listingRouter
       })
       .catch(next)
   })
-  .post(upload.single('image'), requireAuth, jsonParser, (req, res, next) => {
+  .post(requireAuth, upload.single('img_location'), (req, res, next) => {
+    console.log(req)
     const img_location = req.file.location
+    console.log(img_location)
     const { title, location, lat, lng, description } = req.body
     const user_id = req.user.id
     const newListing = { title, location, lat, lng, description, img_location, user_id}
 
-    for (const field of ['title', 'location', 'lat', 'lng', 'user_id']) {
+    for (const field of ['title', 'location', 'lat', 'lng', 'img_location']) {
       if (!req.body[field])  {
             return res.status(400).json({
                 error: `Missing '${field}' in request body`
@@ -49,6 +51,7 @@ listingRouter
       newListing
     )
       .then(listing => {
+        console.log(listing)
         res
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${listing.id}`))
