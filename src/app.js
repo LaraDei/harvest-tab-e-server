@@ -7,6 +7,7 @@ const { NODE_ENV, CLIENT_ORIGIN} = require('./config')
 const listingRouter = require('./listing/listing-router')
 const createAccountRouter = require('./createAccount/createAccount-router')
 const loginRouter = require('./login/login-router')
+// const upload = require( './middleware/uploader' );
 
 const app = express()
 
@@ -18,7 +19,7 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors()
 );
-
+// app.use( '/api/upload', upload );
 app.use('/api/listings', listingRouter)
 app.use('/api/auth', createAccountRouter)
 app.use('/api/auth', loginRouter)

@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const ListingService = require('./listing-service')
 const { requireAuth } = require('../middleware/jwt-auth')
+const imgUpload = require('../middleware/uploader')
 
 const listingRouter = express.Router()
 const jsonParser = express.json()
@@ -29,8 +30,9 @@ listingRouter
       })
       .catch(next)
   })
-  .post(requireAuth, jsonParser, (req, res, next) => {
-    const { title, location, lat, lng, description, img_location } = req.body
+  .post(requireAuth, imgUpload('img_location'), jsonParser, (req, res, next) => {
+    const img_location = req.file.location
+    const { title, location, lat, lng, description } = req.body
     const user_id = req.user.id
     const newListing = { title, location, lat, lng, description, img_location, user_id}
 

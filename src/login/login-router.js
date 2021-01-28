@@ -4,6 +4,7 @@ const { requireAuth } = require('../middleware/jwt-auth')
 const loginRouter = express.Router()
 const jsonParser = express.json()
 
+
 const serializeUser = user => ({
   id: user.id,
   fullname: user.fullname,
