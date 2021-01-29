@@ -16,9 +16,9 @@ const morganOption = (NODE_ENV === 'production')
   : 'common';
 
 app.use(morgan(morganOption))
+app.use(cors())
 app.use(helmet())
-app.use(cors());
-// app.use( '/api/upload', upload );
+
 app.use('/api/listings', listingRouter)
 app.use('/api/auth', createAccountRouter)
 app.use('/api/auth', loginRouter)

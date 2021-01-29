@@ -99,7 +99,7 @@ describe('Listings Endpoints', function() {
   //       lng: -121.27806123413936,
   //       location: 'test ave. Somewhere, CA',
   //       user_id: testUser.id,
-  //       img_location: '"https://harn-1611877432274'
+  //       img_location: 'https://harn-1611877432274'
   //     }
   //     return supertest(app)
   //       .post('/api/listings')

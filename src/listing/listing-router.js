@@ -4,6 +4,7 @@ const ListingService = require('./listing-service')
 const { requireAuth } = require('../middleware/jwt-auth')
 const upload = require('../middleware/uploader')
 
+
 const listingRouter = express.Router()
 const jsonParser = express.json()
 
@@ -30,8 +31,9 @@ listingRouter
       })
       .catch(next)
   })
-  .post(requireAuth, upload.single('img_location'), (req, res, next) => {
-    const img_location = req.file.location
+  .post(requireAuth, upload.single('image'), (req, res, next) => {
+    const image = req.file.location
+    const img_location = image
     const { title, location, lat, lng, description } = req.body
     const user_id = req.user.id
     const newListing = { title, location, lat, lng, description, img_location, user_id}
@@ -51,7 +53,6 @@ listingRouter
       .then(listing => {
         res
           .status(201)
-          .location(path.posix.join(req.originalUrl, `/${listing.id}`))
           .json(serializeListing(listing))
       })
       .catch(next)
