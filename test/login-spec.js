@@ -83,6 +83,8 @@ describe('login Endpoints', function() {
             .send(userValidCreds)
             .expect(200, {
                 authToken: expectedToken,
+                id: testUser.id,
+                full_name: testUser.full_name
             })
     })
   })

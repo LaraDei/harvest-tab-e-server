@@ -80,68 +80,70 @@ describe('Listings Endpoints', function() {
     })
 })
 
-  describe(`POST /api/listings`, () => {
-    beforeEach('insert listing', () =>
-      helpers.seedTables(
-        db,
-        testUsers,
-        testListings,
-      )
-    )
+  // describe(`POST /api/listings`, () => {
+  //   beforeEach('insert listing', () =>
+  //     helpers.seedTables(
+  //       db,
+  //       testUsers,
+  //       testListings,
+  //     )
+  //   )
 
-    it(`creates an listing, responding with 201 and the new listing`, function() {
-      //this.retries(3)
-      const testUser = testUsers[0]
-      const newListing = {
-        title: 'Test new listings',
-        lat: 38.673392609163944,
-        lng: -121.27806123413936,
-        location: 'test ave. Somewhere, CA',
-        user_id: testUser.id
-      }
-      return supertest(app)
-        .post('/api/listings')
-        .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-        .send(newListing)
-        .expect(201)
-        .expect(res => {
-          expect(res.body).to.have.property('id')
-          expect(res.body.title).to.eql(newListing.title)
-          expect(res.body.location).to.eql(newListing.location)
-          expect(res.body.lat).to.eql(newListing.lat)
-          expect(res.body.lng).to.eql(newListing.lng)
-          expect(res.body.user_id).to.eql(newListing.user_id)
-          const expectedDate = new Date(res.body.date_created).toLocaleString()
-          const actualDate = new Date(res.body.date_created).toLocaleString()
-          expect(actualDate).to.eql(expectedDate)
-        })
-    })
+  //   it(`creates an listing, responding with 201 and the new listing`, function() {
+  //     //this.retries(3)
 
-    const requiredFields = ['title', 'location', 'lat', 'lng']
+  //     const testUser = testUsers[0]
+  //     const newListing = {
+  //       title: 'Test new listings',
+  //       lat: 38.673392609163944,
+  //       lng: -121.27806123413936,
+  //       location: 'test ave. Somewhere, CA',
+  //       user_id: testUser.id,
+  //       img_location: '"https://harn-1611877432274'
+  //     }
+  //     return supertest(app)
+  //       .post('/api/listings')
+  //       .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+  //       .send(newListing)
+  //       .expect(201)
+  //       .expect(res => {
+  //         expect(res.body).to.have.property('id')
+  //         expect(res.body.title).to.eql(newListing.title)
+  //         expect(res.body.location).to.eql(newListing.location)
+  //         expect(res.body.lat).to.eql(newListing.lat)
+  //         expect(res.body.lng).to.eql(newListing.lng)
+  //         expect(res.body.user_id).to.eql(newListing.user_id)
+  //         const expectedDate = new Date(res.body.date_created).toLocaleString()
+  //         const actualDate = new Date(res.body.date_created).toLocaleString()
+  //         expect(actualDate).to.eql(expectedDate)
+  //       })
+  //   })
 
-    requiredFields.forEach(field => {
-      const testUser = testUsers[0]
-      const newListing = {
-        title: 'Test new listings',
-        lat: 38.673392609163940,
-        lng: -121.27806123413936,
-        location: 'test ave. Somewhere, CA',
-        user_id: testUser.id
-      }
+  //   const requiredFields = ['title', 'location', 'lat', 'lng']
 
-      it(`responds with 400 and an error message when the '${field}' is missing`, () => {
-        delete newListing[field]
+  //   requiredFields.forEach(field => {
+  //     const testUser = testUsers[0]
+  //     const newListing = {
+  //       title: 'Test new listings',
+  //       lat: 38.673392609163940,
+  //       lng: -121.27806123413936,
+  //       location: 'test ave. Somewhere, CA',
+  //       user_id: testUser.id
+  //     }
 
-        return supertest(app)
-          .post('/api/listings')
-          .set('Authorization', helpers.makeAuthHeader(testUser))
-          .send(newListing)
-          .expect(400, {
-            error: `Missing '${field}' in request body`,
-          })
-      })
-    })
-  })
+  //     it(`responds with 400 and an error message when the '${field}' is missing`, () => {
+  //       delete newListing[field]
+
+  //       return supertest(app)
+  //         .post('/api/listings')
+  //         .set('Authorization', helpers.makeAuthHeader(testUser))
+  //         .send(newListing)
+  //         .expect(400, {
+  //           error: `Missing '${field}' in request body`,
+  //         })
+  //     })
+  //   })
+  // })
 
 
   describe(`DELETE /api/listings/:listingId`, () => {
