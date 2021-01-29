@@ -30,7 +30,8 @@ storage: multerS3({
   },
   key: function (req, file, cb) {
     console.log(file)
-    cb(null, file.fieldname + '-' + Date.now())
+    cb(null, file.originalname + '-' + Date.now())
+    
   }
 }),
 })

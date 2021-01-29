@@ -8,6 +8,7 @@ const upload = require('../middleware/uploader')
 const listingRouter = express.Router()
 const jsonParser = express.json()
 
+
 const serializeListing = listing => ({
     id: listing.id,
     title: listing.title,
@@ -31,7 +32,7 @@ listingRouter
       })
       .catch(next)
   })
-  .post(requireAuth, upload.single('image'), (req, res, next) => {
+  .post(requireAuth, upload.single('img_location'), (req, res, next) => {
     const image = req.file.location
     const img_location = image
     const { title, location, lat, lng, description } = req.body
