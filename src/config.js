@@ -1,8 +1,10 @@
 module.exports = {
     PORT: process.env.PORT || 8000,
     NODE_ENV: process.env.NODE_ENV || 'development',
-    CLIENT_ORIGIN: ['https://harvest-table.vercel.app/',
+    CLIENT_ORIGIN: ['https://harvest-table.vercel.app',
     'https://harvest-table.vercel.app/search',
+    'https://harvest-table.vercel.app/demo',
+    'https://harvest-table.vercel.app/user',
     'https://harvest-table.vercel.app/login',
     'https://harvest-table.vercel.app/register',
     'https://harvest-table.vercel.app/create-listing'] ,
@@ -12,8 +14,10 @@ module.exports = {
     JWT_EXPIRY: process.env.JWT_EXPIRY || '1h'
 }
 /*
-['https://harvest-table.vercel.app/',
+['https://harvest-table.vercel.app',
 'https://harvest-table.vercel.app/search',
+'https://harvest-table.vercel.app/demo',
+'https://harvest-table.vercel.app/user',
 'https://harvest-table.vercel.app/login',
 'https://harvest-table.vercel.app/register',
 'https://harvest-table.vercel.app/create-listing']
