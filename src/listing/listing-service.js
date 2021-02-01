@@ -34,10 +34,12 @@ const ListingService = {
           .where('title', 'ilike', term)
       },
     
-      deleteListing(knex, id) {
+      deleteListing(knex, id, userId) {
         return knex('harvest_table_listings')
-          .where('id', id)
-          .where('user_id', id)
+          .where({
+            'id': id,
+            'user_id': userId
+          })
           .delete()
       },
 }
