@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { search } = require('../src/app');
 
 function makeUsersArray() {
   return [
@@ -99,6 +100,24 @@ function makeListingsArray(users) {
   ];
 }
 
+function makeExpectedListingTerm(listings, term){
+  searchTerm = term.toLowerCase()
+  const matching = listings.filter(listing => 
+      listing.title.includes(searchTerm))
+    return matching.map(i => {
+       return {
+        id: i.id,
+        title: i.title,
+        date_created: i.date_created.toISOString(),
+        date_modified: i.date_modified.toISOString(),
+        img_location: i.img_location || null,
+        location: i.location,
+        lat: i.lat,
+        lng: i.lng,
+        description: i.description|| null,
+        user_id: i.user_id,
+      }})
+}
 
 function makeExpectedListing(listings, listingId) {
   if(listingId){
@@ -201,4 +220,5 @@ module.exports = {
   seedTables,
   makeAuthHeader,
   seedUsers,
+  makeExpectedListingTerm
 }

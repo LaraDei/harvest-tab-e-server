@@ -1,7 +1,7 @@
 
 
 const ListingService = {
-    getAllListings(knex) {
+    getAllListings(knex, term) {
         return knex
           .select('*')
           .from('harvest_table_listings')
@@ -24,6 +24,14 @@ const ListingService = {
           .select('*')
           .where('id', id)
           .first()
+      },
+
+      getByTerm(knex, term) {
+        //console.log(term)
+        return knex
+          .from('harvest_table_listings')
+          .select('*')
+          .where('title', 'ilike', term)
       },
     
       deleteListing(knex, id) {

@@ -24,6 +24,17 @@ const serializeListing = listing => ({
 listingRouter
   .route('/')
   .get((req, res, next) => {
+    if(req.query.q){
+      const term = "%" + req.query.q + "%";
+    ListingService.getByTerm(
+      req.app.get('db'),
+      term,
+    )
+      .then(listings => {
+        res.json(listings)
+      })
+      .catch(next)
+    }
     ListingService.getAllListings(
       req.app.get('db'),
     )
@@ -38,7 +49,6 @@ listingRouter
     const { title, location, lat, lng, description } = req.body
     const user_id = req.user.id
     const newListing = { title, location, lat, lng, description, img_location, user_id}
-
     for (const field of ['title', 'location', 'lat', 'lng']) {
       if (!req.body[field])  {
             return res.status(400).json({

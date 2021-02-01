@@ -34,7 +34,17 @@ describe('Listings Endpoints', function() {
               testListings,
             )
           )
-    
+          it('responds with 200 and the listings that match search term',  () => {
+            const term = 'kale'
+            const expextedListings = helpers.makeExpectedListingTerm(
+                testListings, term
+            )
+            return supertest(app)
+              .get(`/api/listings?q=${term}`)
+              .expect(200, expextedListings)
+        
+          })
+
           it('responds with 200 and the listings', () => {
             const expextedListings = testListings.map(listing =>
                 helpers.makeExpectedListing(

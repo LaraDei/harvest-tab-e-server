@@ -7,6 +7,7 @@ const { NODE_ENV, CLIENT_ORIGIN} = require('./config')
 const listingRouter = require('./listing/listing-router')
 const createAccountRouter = require('./createAccount/createAccount-router')
 const loginRouter = require('./login/login-router')
+const ListingService = require('./listing/listing-service')
 // const upload = require( './middleware/uploader' );
 
 const app = express()
@@ -30,6 +31,18 @@ app.use('/api/auth', loginRouter)
 app.get('/', (req, res) => {
     res.send('Hello, boilerplate!')
 })
+// app.get('/api/search', (req, res, next) => {
+//     //console.log(req.query.q)
+//     const term = "%" + req.query.q + "%";
+//     ListingService.getByTerm(
+//       req.app.get('db'),
+//       term,
+//     )
+//       .then(listings => {
+//         res.json(listings)
+//       })
+//       .catch(next)
+//   })
 
 app.use(function errorHandler(error, req, res, next) {
     let response
