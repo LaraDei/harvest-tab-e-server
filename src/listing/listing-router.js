@@ -56,7 +56,11 @@ listingRouter
             })
         }
     }
-    
+    if (!img_location){
+      res.status(415).json({
+        error: 'Please upload a jpeg or png image'
+      })
+    }
     ListingService.insertListing(
       req.app.get('db'),
       newListing
