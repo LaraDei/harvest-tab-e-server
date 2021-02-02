@@ -28,6 +28,9 @@ app.use('/api/listings', listingRouter)
 app.use('/api/auth', createAccountRouter)
 app.use('/api/auth', loginRouter)
 
+app.get('/', (req, res) => {
+    res.send('Hello, boilerplate!')
+})
 // app.get('/api/search', (req, res, next) => {
 //     //console.log(req.query.q)
 //     const term = "%" + req.query.q + "%";
