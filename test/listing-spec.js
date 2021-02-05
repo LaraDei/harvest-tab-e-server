@@ -168,10 +168,6 @@ describe('Listings Endpoints', function() {
     
         it('responds with 200 and removes the listing', () => {
             const idToRemove = testListings[0].id
-            // const userId = testUsers[0].id
-            // const expectedListing =  helpers.makeExpectedListing(
-            //   testListings, idToRemove
-            // )
             return supertest(app)
                 .delete(`/api/listings/${idToRemove}`)
                 .set('Authorization', helpers.makeAuthHeader(testUsers[0]))

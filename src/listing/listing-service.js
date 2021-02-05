@@ -27,7 +27,6 @@ const ListingService = {
       },
 
       getByTerm(knex, term) {
-        //console.log(term)
         return knex
           .from('harvest_table_listings')
           .select('*')
